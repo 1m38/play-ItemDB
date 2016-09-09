@@ -1,1 +1,1 @@
-web: target/universal/stage/bin/actor-search-play-example -Dhttp.port=${PORT} -Dplay.crypto.secret=${APPLICATION_SECRET}
+web: target/universal/stage/bin/play-ItemDB -Dhttp.port=${PORT} -Dplay.crypto.secret=${APPLICATION_SECRET}
