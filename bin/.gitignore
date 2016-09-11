@@ -9,3 +9,6 @@
 /routes
 /services/
 /views/
+/models/
+/api/
+/evolutions/
