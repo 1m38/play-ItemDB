@@ -44,10 +44,4 @@ public class Item extends Model{
 	
 	public static final Find<Long, Item> finder = new Find<Long, Item>(){};
 	
-	public String toString() {
-		return "Item [Id=" + id + ", title=" + title + ", description=" + description
-				+ ", price=" + price + ", picture_uri=" + picture_uri
-				+ ", createDate=" + createDate + "]";
-	}
-
 }

@@ -1,0 +1,10 @@
+2016-09-11  Masaya Uno  <masaya@FS-MC-pca308>
+
+	* app/controllers/ApiController.java:
+	(init): 初期ダミーデータを登録 (とりあえず画像は扱わない)
+	(showAll): 全itemを取得して、jsonで返す
+
+	* app/models/Item.java (toString): Json.toJson() で間に合うので削除
+
+	* app/models/Item.java: 作成
+

@@ -4,10 +4,11 @@
  * two arguments, a `String` for the title of the page and an `Html`
  * object to insert into the body of the page.
  *@
-@(title: String)(content: Html)
+
+@(title: String, header: String)(content: Html)
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
     <head>
         @* Here's where we render the page title `String`. *@
         <title>@title</title>
@@ -16,6 +17,11 @@
         <script src="@routes.Assets.versioned("javascripts/hello.js")" type="text/javascript"></script>
     </head>
     <body>
+        <div class="container">
+            <div class="page-header">
+                <h1>@header</h1>
+            </div>
+        </div>
         @* And here's where we render the `Html` object containing
          * the page content. *@
         @content

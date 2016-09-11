@@ -1,14 +1,3 @@
-/ApplicationTest.class
-/Filters.class
-/IntegrationTest.class
-/Module.class
-/application.conf
-/controllers/
-/filters/
-/logback.xml
-/routes
-/services/
+/WebAppController.class
 /views/
 /models/
-/api/
-/evolutions/
