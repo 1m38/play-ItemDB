@@ -1,3 +1,7 @@
+2016-09-12  Masaya Uno  <masaya@FS-MC-pca308>
+
+	* conf/application.conf: Evolutions自動実行を有効に(Heroku動作用)
+
 2016-09-11  Masaya Uno  <masaya@FS-MC-pca308>
 
 	* Procfile: 作成(Heroku動作用)
