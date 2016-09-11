@@ -1,5 +1,7 @@
 2016-09-11  Masaya Uno  <masaya@FS-MC-pca308>
 
+	* Procfile: 作成(Heroku動作用)
+
 	* app/controllers/ApiController.java:
 	(init): 初期ダミーデータを登録 (とりあえず画像は扱わない)
 	(showAll): 全itemを取得して、jsonで返す
