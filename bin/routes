@@ -2,11 +2,26 @@
 # This file defines all application routes (Higher priority routes first)
 # ~~~~
 
+GET     /api/items                  controllers.ApiController.showItems
+
+GET     /api/items/:id              controllers.ApiController.show(id: Long)
+
+POST    /api/items                  controllers.ApiController.createItem
+
+DELETE  /api/items/:id              controllers.ApiController.deleteItem(id: Long)
+
+PUT     /api/items/:id              controllers.ApiController.updateItem(id: Long)
+
+
+# Webインターフェース
 GET     /                           controllers.WebAppController.index
 
+
+# debug用
 GET     /api/init                   controllers.ApiController.init
 
 GET     /api/show-all               controllers.ApiController.showAll
+
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)

@@ -1,5 +1,14 @@
 2016-09-12  Masaya Uno  <masaya@FS-MC-pca308>
 
+	* app/controllers/ApiController.java:
+	(show): 指定IDのItemを取得する
+	(createItem): 新規Itemを作成(既存Itemの上書きはしない)
+	(deleteItem): ID指定されたItemを削除
+	(updateItem): Itemの情報を変更(新規Itemは作成しない、Item.idは変更できない)
+
+	* app/models/Item.java (fromJson):
+	JSONデータを読み込んでItemインスタンスを返す
+
 	* conf/application.conf: Evolutions自動実行を有効に(Heroku動作用)
 
 2016-09-11  Masaya Uno  <masaya@FS-MC-pca308>
