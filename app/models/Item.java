@@ -35,7 +35,6 @@ public class Item extends Model{
 	@CreatedTimestamp
 	public Date createDate;
 	
-	
 	public Item(Long id, String title, String description, Long price, String picture_uri) {
 		this.id = id;
 		this.title = title;
@@ -55,8 +54,6 @@ public class Item extends Model{
 		String picture_uri = null;
 		if(json.has("id")) {
 			id = json.findPath("id").asLong();
-		} else {
-			// raise;
 		}
 		if(json.has("title")) {
 			title = json.findPath("title").textValue();

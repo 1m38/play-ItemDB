@@ -18,8 +18,8 @@ public class ApiController extends Controller{
 	@Transactional
 	public Result init() {
 		// 初期ダミーデータを登録
-		new Item(1L, "Item1", "description1", 200L, "").save();
-		new Item(2L, "Item2", "", 1000L, "").save();
+		new Item(null, "Item1", "description1", 200L, "").save();
+		new Item(null, "Item2", "", 1000L, "").save();
 
 		ObjectNode result = Json.newObject();
 		result.put("message", "Saved initial data.");
@@ -62,9 +62,8 @@ public class ApiController extends Controller{
 			return badRequest("Expecting Json data");
 		}
 		Item item = Item.fromJson(json);
-		if(Item.finder.byId(item.id) != null) {
-			return badRequest("Item id " + item.id + " already exists.");
-		}
+		// idは自動で割り振られるので削除しておく
+		item.id = null;
 		item.save();
 
 		ObjectNode result = Json.newObject();
