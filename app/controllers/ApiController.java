@@ -21,9 +21,7 @@ public class ApiController extends Controller{
 		new Item(null, "Item1", "description1", 200L, "").save();
 		new Item(null, "Item2", "", 1000L, "").save();
 
-		ObjectNode result = Json.newObject();
-		result.put("message", "Saved initial data.");
-		return ok(result);
+		return ok("Saved initial data.");
 	}
 
 	@Transactional
@@ -32,9 +30,7 @@ public class ApiController extends Controller{
 		// いくつitemがあっても全て返す(開発用) 返すitem数を制限したAPIも後で作る
 		List<Item> items = Item.finder.all();
 
-		ObjectNode result = Json.newObject();
-		result.put("items", Json.toJson(items));
-		return ok(result);
+		return ok(Json.toJson(items));
 	}
 	
 	public Result showItems() {
@@ -50,7 +46,7 @@ public class ApiController extends Controller{
 	public Result show(Long id) {
 		Item item = Item.finder.byId(id);
 		if(item == null) {
-			return badRequest("Item id " + id + " not found.");
+			return notFound("Item id " + id + " not found.");
 		}
 		return ok(Json.toJson(item));
 	}
@@ -67,20 +63,17 @@ public class ApiController extends Controller{
 		item.save();
 
 		response().setHeader(LOCATION, controllers.routes.ApiController.show(item.id).url());
-		return created();
+		return created(Json.toJson(item));
 	}
 	
 	@Transactional
 	public Result deleteItem(Long id) {
 		Item item = Item.finder.byId(id);
 		if(item == null) {
-			return badRequest("Item id " + id + " not found.");
+			return notFound("Item id " + id + " not found.");
 		}
 		item.delete();
-		ObjectNode result = Json.newObject();
-		result.put("message", "Item deleted.");
-		result.put("item", Json.toJson(item));
-		return ok(result);
+		return ok(Json.toJson(item));
 	}
 	
 	@Transactional
@@ -91,7 +84,7 @@ public class ApiController extends Controller{
 		}
 		Item oldItem = Item.finder.byId(id);
 		if(oldItem == null) {
-			return badRequest("Item id " + id + " not found.");
+			return notFound("Item id " + id + " not found.");
 		}
 		
 		Item newItem = Item.fromJson(json);
@@ -100,9 +93,7 @@ public class ApiController extends Controller{
 		}
 		newItem.update();
 
-		ObjectNode result = Json.newObject();
-		result.put("message", "Item updated.");
-		result.put("item", Json.toJson(newItem));
-		return ok(result);
+		response().setHeader(LOCATION, controllers.routes.ApiController.show(newItem.id).url());
+		return created(Json.toJson(newItem));
 	}
 }
