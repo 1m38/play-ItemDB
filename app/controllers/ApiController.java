@@ -12,6 +12,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 import play.mvc.Controller;
 import play.mvc.Result;
 import models.Item;
+import models.ItemNullTitleException;
 
 public class ApiController extends Controller{
 
@@ -57,7 +58,12 @@ public class ApiController extends Controller{
 		if(json == null) {
 			return badRequest("Expecting Json data");
 		}
-		Item item = Item.fromJson(json);
+		Item item = null;
+		try{
+			item = Item.fromJson(json);
+		} catch(ItemNullTitleException e) {
+			return badRequest(e.getMessage());
+		}
 		// idは自動で割り振られるので削除しておく
 		item.id = null;
 		item.save();
@@ -87,7 +93,12 @@ public class ApiController extends Controller{
 			return notFound("Item id " + id + " not found.");
 		}
 		
-		Item newItem = Item.fromJson(json);
+		Item newItem = null;
+		try{
+			newItem = Item.fromJson(json);
+		} catch(ItemNullTitleException e) {
+			return badRequest(e.getMessage());
+		}
 		if(newItem.id != oldItem.id) {
 			return badRequest("Item ID not equals.");
 		}

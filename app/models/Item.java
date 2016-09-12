@@ -50,7 +50,7 @@ public class Item extends Model{
 	public static final Find<Long, Item> finder = new Find<Long, Item>(){};
 	
 	
-	public static Item fromJson(JsonNode json) {
+	public static Item fromJson(JsonNode json) throws ItemNullTitleException {
 		Long id = null;
 		String title = null;
 		String description = null;
@@ -62,7 +62,10 @@ public class Item extends Model{
 		if(json.has("title")) {
 			title = json.findPath("title").textValue();
 		} else {
-			// raise;
+			throw new ItemNullTitleException("null title isn't allowed.");
+		}
+		if(title.length() == 0) {
+			throw new ItemNullTitleException("Empty title isn't allowed.");
 		}
 		if(json.has("description")) {
 			description = json.findPath("description").textValue();

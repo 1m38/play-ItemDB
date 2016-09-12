@@ -1,5 +1,11 @@
 2016-09-12  Masaya Uno  <masaya@FS-MC-pca308>
 
+	* app/controllers/ApiController.java (create, update): titleが空の場合にbadRequestを返す
+
+	* app/models/Item.java (fromJson): titleが空の場合にItemNullTitleExceptionを投げる
+
+	* app/models/ItemNullTitleException.java: Item.titleが空の場合に投げる例外
+
 	* app/models/Item.java: field追加: updatedDate
 
 	* app/controllers/ApiController.java:
