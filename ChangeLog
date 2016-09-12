@@ -5,6 +5,7 @@
 	(createItem): 新規Itemを作成(既存Itemの上書きはしない)
 	(deleteItem): ID指定されたItemを削除
 	(updateItem): Itemの情報を変更(新規Itemは作成しない、Item.idは変更できない)
+	(deleteItem): 存在しないItemIDへの削除要求についてエラー対策
 
 	* app/models/Item.java (fromJson):
 	JSONデータを読み込んでItemインスタンスを返す

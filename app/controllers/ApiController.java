@@ -76,6 +76,9 @@ public class ApiController extends Controller{
 	@Transactional
 	public Result deleteItem(Long id) {
 		Item item = Item.finder.byId(id);
+		if(item == null) {
+			return badRequest("Item id " + id + " not found.");
+		}
 		item.delete();
 		ObjectNode result = Json.newObject();
 		result.put("message", "Item deleted.");
