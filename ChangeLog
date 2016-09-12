@@ -1,6 +1,7 @@
 2016-09-12  Masaya Uno  <masaya@FS-MC-pca308>
 
 	* app/controllers/ApiController.java (create, update): titleが空の場合にbadRequestを返す
+	レスポンスメッセージを少し変更
 
 	* app/models/Item.java (fromJson): titleが空の場合にItemNullTitleExceptionを投げる
 

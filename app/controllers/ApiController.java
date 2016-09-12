@@ -56,7 +56,7 @@ public class ApiController extends Controller{
 	public Result createItem() {
 		JsonNode json = request().body().asJson();
 		if(json == null) {
-			return badRequest("Expecting Json data");
+			return badRequest("Expecting JSON data");
 		}
 		Item item = null;
 		try{
@@ -86,7 +86,7 @@ public class ApiController extends Controller{
 	public Result updateItem(Long id) {
 		JsonNode json = request().body().asJson();
 		if(json == null) {
-			return badRequest("Expecting Json data");
+			return badRequest("Expecting JSON data");
 		}
 		Item oldItem = Item.finder.byId(id);
 		if(oldItem == null) {
@@ -100,7 +100,7 @@ public class ApiController extends Controller{
 			return badRequest(e.getMessage());
 		}
 		if(newItem.id != oldItem.id) {
-			return badRequest("Item ID not equals.");
+			return badRequest("Item IDs in JSON and URI not equal.");
 		}
 		newItem.update();
 
