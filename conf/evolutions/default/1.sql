@@ -10,6 +10,7 @@ create table item (
   price                     bigint,
   picture_uri               varchar(100),
   create_date               timestamp not null,
+  updated_date              timestamp not null,
   constraint pk_item primary key (id))
 ;
 

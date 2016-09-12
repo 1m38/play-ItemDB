@@ -1,5 +1,7 @@
 2016-09-12  Masaya Uno  <masaya@FS-MC-pca308>
 
+	* app/models/Item.java: field追加: updatedDate
+
 	* app/controllers/ApiController.java:
 	(show): 指定IDのItemを取得する
 	(createItem): 新規Itemを作成(既存Itemの上書きはしない)

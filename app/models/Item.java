@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.validation.constraints.Size;
 import javax.validation.constraints.NotNull;
 import com.avaje.ebean.annotation.CreatedTimestamp;
+import com.avaje.ebean.annotation.UpdatedTimestamp;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.avaje.ebean.Model;
 
@@ -34,6 +35,9 @@ public class Item extends Model{
 	
 	@CreatedTimestamp
 	public Date createDate;
+	
+	@UpdatedTimestamp
+	public Date updatedDate;
 	
 	public Item(Long id, String title, String description, Long price, String picture_uri) {
 		this.id = id;
