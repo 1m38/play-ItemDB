@@ -66,10 +66,8 @@ public class ApiController extends Controller{
 		item.id = null;
 		item.save();
 
-		ObjectNode result = Json.newObject();
-		result.put("message", "Item saved.");
-		result.put("item", Json.toJson(item));
-		return ok(result);
+		response().setHeader(LOCATION, controllers.routes.ApiController.show(item.id).url());
+		return created();
 	}
 	
 	@Transactional

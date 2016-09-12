@@ -7,6 +7,7 @@
 	(updateItem): Itemの情報を変更(新規Itemは作成しない、Item.idは変更できない)
 	(deleteItem): 存在しないItemIDへの削除要求についてエラー対策
 	(createItem, init): Item.idは自動設定させる
+	(createItem): responceを作成されたItemのJsonではなく、Created(LOCATION)で返す
 
 	* app/models/Item.java (fromJson):
 	JSONデータを読み込んでItemインスタンスを返す
